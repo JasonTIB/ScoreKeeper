@@ -20,13 +20,27 @@
 	
 // })
 
-var player2Score=0;
 
 var player1Score=0
+var player2Score=0;
+
 var inc=document.getElementById("inc");
+var ply=document.getElementById("ply");
+
+var btn= document.querySelector("#p1");
+var btn2= document.querySelector("#p2");
 
 var pl1=document.querySelector("#pl1");
-var btn= document.querySelector("#p1");
+var pl2=document.querySelector("#pl2");
+
+var resetButton=document.querySelector("#re");
+
+resetButton.addEventListener("click",function(){
+	player1Score=Player2Score=0;
+	pl1.textContent=pl2.textContent=0;
+
+});
+
 btn.addEventListener("click", function(){
 	if(player1Score < inc.value){
 		player1Score++;
@@ -38,9 +52,6 @@ btn.addEventListener("click", function(){
 	pl1.textContent=player1Score;
 });
 
-
-var pl2=document.querySelector("#pl2");
-var btn2= document.querySelector("#p2");
 btn2.addEventListener("click", function(){
 	if(player2Score < inc.value){
 		player2Score++;
@@ -51,7 +62,6 @@ btn2.addEventListener("click", function(){
 	pl2.textContent=player2Score;
 });
 
-var ply=document.getElementById("ply");
 inc.addEventListener("change",function(){
 	ply.textContent=inc.value
 });
