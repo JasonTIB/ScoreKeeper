@@ -21,7 +21,7 @@
 // })
 
 
-var player1Score=0
+var player1Score=0;
 var player2Score=0;
 
 var inc=document.getElementById("inc");
@@ -35,35 +35,55 @@ var pl2=document.querySelector("#pl2");
 
 var resetButton=document.querySelector("#re");
 
-resetButton.addEventListener("click",function(){
-	player1Score=Player2Score=0;
-	pl1.textContent=pl2.textContent=0;
+var winningScore=inc.value
 
+var gameOver=false;
+
+var value=Number(winningScore)
+
+resetButton.addEventListener("click",function(){
+	player1Score=0;
+	
+	player2Score=0;
+	
+	pl1.textContent=0
+
+	pl2.textContent=0;
+
+	gameOver=false;
+
+	console.log(player1Score)
+	console.log(value)
 });
 
 btn.addEventListener("click", function(){
-	if(player1Score < inc.value){
+
+	console.log(player1Score)
+	console.log(value)
+	if(player1Score < value && gameOver===false){
 		player1Score++;
 	}
-	if(player2Score===inc.value){
-		player1Score;
+	if (player1Score===value){
+		gameOver=true;
 	}
-	
 	pl1.textContent=player1Score;
 });
 
+
 btn2.addEventListener("click", function(){
-	if(player2Score < inc.value){
+	if(player2Score < value && gameOver===false){
 		player2Score++;
 	}
-	if(player1Score===inc.value){
-		player2Score;
+	if (player2Score===value){
+		gameOver=true;
 	}
 	pl2.textContent=player2Score;
 });
 
 inc.addEventListener("change",function(){
 	ply.textContent=inc.value
+	value=Number(inc.value)
+
 });
 
 
